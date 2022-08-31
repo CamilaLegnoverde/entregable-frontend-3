@@ -1,3 +1,6 @@
+import Cabecera from "./components/Cabecera";
+import Listado from "./components/Listado";
+import React from 'react'
 // El componente App es el padre de:
 // - Cabecera
 // - Listado
@@ -6,11 +9,16 @@
 // PROPS: App deberá pasar por props lo necesario a sus componenetes internos.
 
 function App() {
+  const [cantidadProductosComprados, setNumero] = React.useState(0);
 
+  const aumentarContadorDeProductos = () => {
+    setNumero(cantidadProductosComprados + 1);
+  }
+  
   return (
     <div className="App">
-      <Cabecera />
-      <Listado />
+      <Cabecera cantidadProductos={cantidadProductosComprados}/>
+      <Listado aumentarContador = {aumentarContadorDeProductos}/>
     </div>
   );
 }
